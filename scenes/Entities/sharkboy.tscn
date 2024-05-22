@@ -1,12 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8toctg1mcqn8"]
+[gd_scene load_steps=18 format=3 uid="uid://c8toctg1mcqn8"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Enemies/sharkboy.gd" id="1_yrx11"]
+[ext_resource type="Texture2D" uid="uid://b70woxl0x5ppu" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/09-Dead Hit/Dead Hit 04.png" id="2_3uxph"]
 [ext_resource type="Texture2D" uid="uid://pqlighqifveb" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 02.png" id="2_hisjg"]
 [ext_resource type="Texture2D" uid="uid://cmbiueivq4a37" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 01.png" id="3_u60bl"]
 [ext_resource type="Texture2D" uid="uid://digxwen4wjct5" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 03.png" id="4_0qbcm"]
 [ext_resource type="Texture2D" uid="uid://q2tsuvjyiyhx" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 04.png" id="5_e1nrs"]
 [ext_resource type="Texture2D" uid="uid://oswr6tgvm30b" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 05.png" id="6_8ivuo"]
 [ext_resource type="Texture2D" uid="uid://e5tt5cdscm5h" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 06.png" id="7_qu456"]
+[ext_resource type="Texture2D" uid="uid://cn1axnasujenu" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 01.png" id="9_fl5w2"]
+[ext_resource type="Texture2D" uid="uid://cavg0mvfpoyth" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 02.png" id="10_ttqwi"]
+[ext_resource type="Texture2D" uid="uid://ba5xkw2nahwff" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 03.png" id="11_0evmv"]
+[ext_resource type="Texture2D" uid="uid://df4jev6uceona" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 04.png" id="12_l8o6y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_264j1"]
 radius = 9.0
@@ -33,8 +38,39 @@ tracks/0/keys = {
 "values": [ExtResource("3_u60bl"), ExtResource("2_hisjg"), ExtResource("4_0qbcm"), ExtResource("5_e1nrs"), ExtResource("6_8ivuo"), ExtResource("7_qu456")]
 }
 
+[sub_resource type="Animation" id="Animation_lofwj"]
+resource_name = "die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_fl5w2"), ExtResource("10_ttqwi"), ExtResource("11_0evmv"), ExtResource("12_l8o6y")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpiua"]
 _data = {
+"die": SubResource("Animation_lofwj"),
 "run": SubResource("Animation_dtabt")
 }
 
@@ -43,7 +79,7 @@ collision_layer = 2
 script = ExtResource("1_yrx11")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hisjg")
+texture = ExtResource("2_3uxph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -63,5 +99,9 @@ libraries = {
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
 target_position = Vector2(0, 15)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(-6, 0)
+target_position = Vector2(-12, 0)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

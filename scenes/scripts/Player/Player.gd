@@ -22,6 +22,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	# seta GamaManager.player para a instância atual do script
 	GameManager.player = self
+	#if !attacking:
+		#$AttackArea/CollisionShape2D.disabled = true
 
 # função chamada a cada frame
 func _process(delta):
@@ -78,6 +80,7 @@ func update_animation():
 		elif velocity.y >0:
 			animation.play("fall")
 
+#TODO: JOGADOR TOMA DANO SE ALGO ENCOSTAR NA HITBOX DA ESPADA
 #função para respawnar o jogador quando ele morre
 func death():
 	GameManager.respawn_player()
@@ -85,10 +88,10 @@ func death():
 # função para ataque
 func attack():
 	# verifica tudo dentro da area de colisão da area de ataque
-	var overlapping_object = $AttackArea.get_overlapping_areas()
+	var overlapping_objects = $AttackArea.get_overlapping_areas()
 
-	for area in overlapping_object:
-		if area.get_parent().is_on_group("Enemies"):
+	for area in overlapping_objects:
+		if area.get_parent().is_in_group("Enemies"):
 			area.get_parent().death()
 	attacking = true
 	# reproduz animação de ataque
