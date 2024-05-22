@@ -1,0 +1,62 @@
+[gd_scene load_steps=15 format=3 uid="uid://pw7fmn7k4b2i"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Interactables/checkpoint.gd" id="1_hlup3"]
+[ext_resource type="Texture2D" uid="uid://clm6jl3ofykxb" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 04.png" id="1_s1uf5"]
+[ext_resource type="Texture2D" uid="uid://7226583dxc55" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 01.png" id="2_omw8n"]
+[ext_resource type="Texture2D" uid="uid://7vvnui5m4dro" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 02.png" id="3_gr3yq"]
+[ext_resource type="Texture2D" uid="uid://cth7qj6xx0ke5" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 03.png" id="4_mn2x7"]
+[ext_resource type="Texture2D" uid="uid://bs46h5yw5tx2n" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 05.png" id="5_i0vub"]
+[ext_resource type="Texture2D" uid="uid://bhvwqu6entduv" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 06.png" id="6_ulo4t"]
+[ext_resource type="Texture2D" uid="uid://8qt7ka4vvbe0" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 07.png" id="7_plcc5"]
+[ext_resource type="Texture2D" uid="uid://dntiwfhytckey" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 08.png" id="8_6f7pn"]
+[ext_resource type="Texture2D" uid="uid://bf1whw04nriu4" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 09.png" id="9_uqbmk"]
+[ext_resource type="Texture2D" uid="uid://bmyd3p4i1di32" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Platform.png" id="11_rfjr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkree"]
+size = Vector2(41, 95)
+
+[sub_resource type="Animation" id="Animation_lfuvh"]
+resource_name = "activated"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_omw8n"), ExtResource("3_gr3yq"), ExtResource("4_mn2x7"), ExtResource("1_s1uf5"), ExtResource("5_i0vub"), ExtResource("6_ulo4t"), ExtResource("7_plcc5"), ExtResource("8_6f7pn"), ExtResource("9_uqbmk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn7vl"]
+_data = {
+"activated": SubResource("Animation_lfuvh")
+}
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_hlup3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_mn2x7")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_xkree")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tn7vl")
+}
+
+[node name="Platform" type="Sprite2D" parent="."]
+position = Vector2(-15, 39)
+texture = ExtResource("11_rfjr6")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
