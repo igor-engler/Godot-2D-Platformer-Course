@@ -33,6 +33,7 @@ func _ready():
 # função chamada a cada frame
 func _process(delta):
 	get_node("HealthBar").update_healthbar(health, max_health)
+	print(health)
 	if Input.is_action_just_pressed("attack"):
 		attack()
 
@@ -109,7 +110,6 @@ func take_damage(damage_amount : int):
 	if can_take_damage:
 		iframes()
 		health-=damage_amount
-		
 		
 	if health <= 0:
 		death()

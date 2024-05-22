@@ -7,9 +7,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right = false
 
 var dead = false
+@export var attacking = false
 
-func _ready():
-	$AnimationPlayer.play("run")
+#func _ready():
+	#$AnimationPlayer.play("run")
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -21,8 +22,20 @@ func _physics_process(delta):
 		flip()
 
 	velocity.x = speed
+	update_animation()
 	move_and_slide()
 	
+func update_animation():
+	if dead:
+		$AnimationPlayer.play("die")
+		#await(0.4)
+		#queue_free()
+	elif !attacking:
+		$AnimationPlayer.play("run")
+	elif attacking:
+		$AnimationPlayer.play("attack")
+		
+		
 func flip():
 	# troca o lado
 	facing_right = !facing_right
@@ -38,14 +51,17 @@ func flip():
 func _on_hitbox_area_entered(area):
 	
 	#verifica se o nó que contém a Area2D é o jogador
-	if area.get_parent() is Player && !dead:
+	if area.get_parent() is Player && !dead && !attacking:
+		#speed = 0
+		attacking = true
 		print("colidiu")
 		print("arruma aqui")
 		#se for, chama a função death
 		area.get_parent().take_damage(1)
+		
 
 func death():
 	dead = true
 	speed = 0
-	#queue_free()
-	$AnimationPlayer.play("die")
+	
+	#$AnimationPlayer.play("die")

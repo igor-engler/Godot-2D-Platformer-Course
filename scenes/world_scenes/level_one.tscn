@@ -657,6 +657,17 @@ position = Vector2(737, 577)
 [node name="Spike2" parent="Spikes" instance=ExtResource("4_6hd4v")]
 position = Vector2(975, 529)
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Sharkboy" parent="Enemies" instance=ExtResource("8_7ge7y")]
+position = Vector2(944, 532)
+
+[node name="Sharkboy2" parent="Enemies" instance=ExtResource("8_7ge7y")]
+position = Vector2(1020, 531)
+
+[node name="Sharkboy3" parent="Enemies" instance=ExtResource("8_7ge7y")]
+position = Vector2(469, 532)
+
 [node name="Player" parent="." instance=ExtResource("2_yh62u")]
 position = Vector2(1238, 483)
 speed = 200.0
@@ -707,17 +718,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "0
 "
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Sharkboy" parent="Enemies" instance=ExtResource("8_7ge7y")]
-position = Vector2(944, 532)
-
-[node name="Sharkboy2" parent="Enemies" instance=ExtResource("8_7ge7y")]
-position = Vector2(1020, 531)
-
-[node name="Sharkboy3" parent="Enemies" instance=ExtResource("8_7ge7y")]
-position = Vector2(469, 532)
 
 [node name="HealthPickups" type="Node2D" parent="."]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8toctg1mcqn8"]
+[gd_scene load_steps=23 format=3 uid="uid://c8toctg1mcqn8"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Enemies/sharkboy.gd" id="1_yrx11"]
+[ext_resource type="Texture2D" uid="uid://1sv6prom5hu5" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/07-Attack/Attack 01.png" id="2_3sj50"]
 [ext_resource type="Texture2D" uid="uid://pqlighqifveb" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 02.png" id="2_hisjg"]
 [ext_resource type="Texture2D" uid="uid://cmbiueivq4a37" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 01.png" id="3_u60bl"]
 [ext_resource type="Texture2D" uid="uid://digxwen4wjct5" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 03.png" id="4_0qbcm"]
@@ -11,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cavg0mvfpoyth" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 02.png" id="10_ttqwi"]
 [ext_resource type="Texture2D" uid="uid://ba5xkw2nahwff" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 03.png" id="11_0evmv"]
 [ext_resource type="Texture2D" uid="uid://df4jev6uceona" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/08-Hit/Hit 04.png" id="12_l8o6y"]
+[ext_resource type="Texture2D" uid="uid://pqkoyojc4d07" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/07-Attack/Attack 02.png" id="13_l1kly"]
+[ext_resource type="Texture2D" uid="uid://couuq1fucfb6n" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/07-Attack/Attack 03.png" id="14_ey828"]
+[ext_resource type="Texture2D" uid="uid://jdwlxuy0kyjl" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/07-Attack/Attack 04.png" id="15_7ir1n"]
+[ext_resource type="Texture2D" uid="uid://cvfqtonvx41oj" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/07-Attack/Attack 05.png" id="16_wjbxl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_264j1"]
 radius = 9.0
@@ -67,8 +72,37 @@ tracks/0/keys = {
 "values": [ExtResource("3_u60bl"), ExtResource("2_hisjg"), ExtResource("4_0qbcm"), ExtResource("5_e1nrs"), ExtResource("6_8ivuo"), ExtResource("7_qu456")]
 }
 
+[sub_resource type="Animation" id="Animation_te2km"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_3sj50"), ExtResource("13_l1kly"), ExtResource("14_ey828"), ExtResource("15_7ir1n"), ExtResource("16_wjbxl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpiua"]
 _data = {
+"attack": SubResource("Animation_te2km"),
 "die": SubResource("Animation_lofwj"),
 "run": SubResource("Animation_dtabt")
 }
@@ -78,7 +112,7 @@ collision_layer = 2
 script = ExtResource("1_yrx11")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("12_l8o6y")
+texture = ExtResource("9_fl5w2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
