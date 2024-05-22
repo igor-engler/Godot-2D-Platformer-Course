@@ -149,7 +149,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ycd00")
-attacking = null
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false

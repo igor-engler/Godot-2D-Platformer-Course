@@ -42,7 +42,7 @@ func _on_hitbox_area_entered(area):
 		print("colidiu")
 		print("arruma aqui")
 		#se for, chama a função death
-		#area.get_parent().death()
+		area.get_parent().take_damage(1)
 
 func death():
 	dead = true

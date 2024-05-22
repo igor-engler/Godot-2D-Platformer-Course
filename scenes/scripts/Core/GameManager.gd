@@ -15,6 +15,7 @@ var player : Player
 
 # função chamada quando o jogador precisa respawnar
 func respawn_player():
+	player.health = player.max_health
 	# verifica se existe um checkpoint
 	if current_checkpoint != null:
 		# se existe, coloca o jogador na posição global daquele checkpoint

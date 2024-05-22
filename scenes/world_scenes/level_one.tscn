@@ -660,6 +660,7 @@ position = Vector2(975, 529)
 position = Vector2(865, 530)
 speed = 200.0
 jump_height = -300.0
+attacking = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(24, 2)

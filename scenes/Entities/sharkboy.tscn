@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8toctg1mcqn8"]
+[gd_scene load_steps=17 format=3 uid="uid://c8toctg1mcqn8"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Enemies/sharkboy.gd" id="1_yrx11"]
-[ext_resource type="Texture2D" uid="uid://b70woxl0x5ppu" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/09-Dead Hit/Dead Hit 04.png" id="2_3uxph"]
 [ext_resource type="Texture2D" uid="uid://pqlighqifveb" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 02.png" id="2_hisjg"]
 [ext_resource type="Texture2D" uid="uid://cmbiueivq4a37" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 01.png" id="3_u60bl"]
 [ext_resource type="Texture2D" uid="uid://digxwen4wjct5" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 03.png" id="4_0qbcm"]
@@ -79,7 +78,7 @@ collision_layer = 2
 script = ExtResource("1_yrx11")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3uxph")
+texture = ExtResource("12_l8o6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

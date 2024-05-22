@@ -18,8 +18,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # variavel booleana, ativa se o jogador estiver atacando
 @export var attacking = false
 
+var max_health = 2
+var health = 0
+var can_take_damage = true
+
 # função _ready() é chamada quando o script é adicionado à cena e está pronto para uso
 func _ready():
+	health = max_health
 	# seta GamaManager.player para a instância atual do script
 	GameManager.player = self
 	#if !attacking:
@@ -96,3 +101,17 @@ func attack():
 	attacking = true
 	# reproduz animação de ataque
 	animation.play("attack")
+	
+func take_damage(damage_amount : int):
+	if can_take_damage:
+		iframes()
+		health-=damage_amount
+		
+	if health <= 0:
+		death()
+
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(1).timeout
+	can_take_damage = true
+	
