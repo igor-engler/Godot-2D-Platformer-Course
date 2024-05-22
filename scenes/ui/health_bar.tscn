@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc4qm1i76kw1m"]
+
+[ext_resource type="Script" path="res://scenes/scripts/UI/health_bar.gd" id="1_d6re4"]
+[ext_resource type="Texture2D" uid="uid://0am26swdyg58" path="res://Treasure Hunters (1)/Treasure Hunters/Wood and Paper UI/Sprites/Life Bars/Big Bars/1.png" id="1_mbgjl"]
+[ext_resource type="Texture2D" uid="uid://bi4rwhjemq2lw" path="res://Treasure Hunters (1)/Treasure Hunters/Wood and Paper UI/Sprites/Life Bars/Big Bars/4.png" id="2_2wxsx"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d6re4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, 0)
+texture = ExtResource("1_mbgjl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+texture = ExtResource("2_2wxsx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -2.0
+offset_right = 28.0
+color = Color(0.771373, 0, 0.104536, 1)

@@ -658,7 +658,7 @@ position = Vector2(737, 577)
 position = Vector2(975, 529)
 
 [node name="Player" parent="." instance=ExtResource("2_yh62u")]
-position = Vector2(865, 530)
+position = Vector2(1238, 483)
 speed = 200.0
 jump_height = -300.0
 
@@ -711,7 +711,7 @@ text = "0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Sharkboy" parent="Enemies" instance=ExtResource("8_7ge7y")]
-position = Vector2(1184, 484)
+position = Vector2(944, 532)
 
 [node name="Sharkboy2" parent="Enemies" instance=ExtResource("8_7ge7y")]
 position = Vector2(1020, 531)
@@ -723,6 +723,12 @@ position = Vector2(469, 532)
 
 [node name="HealthUp" parent="HealthPickups" instance=ExtResource("9_lbue8")]
 position = Vector2(1090, 488)
+
+[node name="HealthUp3" parent="HealthPickups" instance=ExtResource("9_lbue8")]
+position = Vector2(1130, 487)
+
+[node name="HealthUp4" parent="HealthPickups" instance=ExtResource("9_lbue8")]
+position = Vector2(1189, 486)
 
 [node name="HealthUp2" parent="HealthPickups" instance=ExtResource("9_lbue8")]
 position = Vector2(915, 536)
