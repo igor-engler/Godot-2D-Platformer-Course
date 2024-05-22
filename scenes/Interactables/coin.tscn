@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://baqmtripyehbw"]
+[gd_scene load_steps=13 format=3 uid="uid://baqmtripyehbw"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Interactables/coin.gd" id="1_a47jm"]
 [ext_resource type="Texture2D" uid="uid://b8agwfwpj1max" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/01.png" id="1_rejrj"]
+[ext_resource type="Texture2D" uid="uid://bu3u3sdvgpwtb" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Coin Effect/03.png" id="2_nk2f7"]
 [ext_resource type="Texture2D" uid="uid://okpilwii3hl7" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/02.png" id="3_33v3p"]
 [ext_resource type="Texture2D" uid="uid://w325ceaqnjlk" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/03.png" id="4_2ole4"]
 [ext_resource type="Texture2D" uid="uid://kh7wa56s2q5n" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/04.png" id="5_6bu0l"]
+[ext_resource type="Texture2D" uid="uid://biwlo4ypw2k" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Coin Effect/01.png" id="7_65egu"]
+[ext_resource type="Texture2D" uid="uid://ccih2yik5vtev" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Coin Effect/02.png" id="8_o7ua7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pp0p"]
 radius = 6.34345
@@ -26,8 +29,37 @@ tracks/0/keys = {
 "values": [ExtResource("1_rejrj"), ExtResource("3_33v3p"), ExtResource("4_2ole4"), ExtResource("5_6bu0l")]
 }
 
+[sub_resource type="Animation" id="Animation_p28l2"]
+resource_name = "collected"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_65egu"), ExtResource("8_o7ua7"), ExtResource("2_nk2f7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collected")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dkgic"]
 _data = {
+"collected": SubResource("Animation_p28l2"),
 "idle": SubResource("Animation_2eost")
 }
 
@@ -35,7 +67,7 @@ _data = {
 script = ExtResource("1_a47jm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rejrj")
+texture = ExtResource("7_65egu")
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false

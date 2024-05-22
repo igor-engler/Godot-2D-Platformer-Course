@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8toctg1mcqn8"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Enemies/sharkboy.gd" id="1_yrx11"]
+[ext_resource type="Texture2D" uid="uid://pqlighqifveb" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 02.png" id="2_hisjg"]
+[ext_resource type="Texture2D" uid="uid://cmbiueivq4a37" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 01.png" id="3_u60bl"]
+[ext_resource type="Texture2D" uid="uid://digxwen4wjct5" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 03.png" id="4_0qbcm"]
+[ext_resource type="Texture2D" uid="uid://q2tsuvjyiyhx" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 04.png" id="5_e1nrs"]
+[ext_resource type="Texture2D" uid="uid://oswr6tgvm30b" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 05.png" id="6_8ivuo"]
+[ext_resource type="Texture2D" uid="uid://e5tt5cdscm5h" path="res://Treasure Hunters (1)/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 06.png" id="7_qu456"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_264j1"]
+radius = 9.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdxji"]
+radius = 9.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_dtabt"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_u60bl"), ExtResource("2_hisjg"), ExtResource("4_0qbcm"), ExtResource("5_e1nrs"), ExtResource("6_8ivuo"), ExtResource("7_qu456")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpiua"]
+_data = {
+"run": SubResource("Animation_dtabt")
+}
+
+[node name="Sharkboy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+script = ExtResource("1_yrx11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hisjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_264j1")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_kdxji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vpiua")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-9, 0)
+target_position = Vector2(0, 15)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -10,4 +10,5 @@ func _on_area_2d_area_entered(area):
 	# chama a função gained_coins do GameManager, passando a quantidade de moedas ganhas (1)
 	GameManager.gain_coins(1)
 	# remove o nó atual da cena (deleta o objeto)
+	$AnimationPlayer.play("collected")
 	queue_free()

@@ -24,7 +24,6 @@ func respawn_player():
 func gain_coins(coins_gained):
 	# adiciona a quantidade de moedas coletadas à contagem total de moedas
 	coins += coins_gained
-	# emite um sinal de que moedas foram coletadas
 	emit_signal("gained_coins", coins_gained)
-	#print(coins)
+	print(coins)
 	
