@@ -88,6 +88,8 @@ func update_animation():
 #TODO: JOGADOR TOMA DANO SE ALGO ENCOSTAR NA HITBOX DA ESPADA
 #função para respawnar o jogador quando ele morre
 func death():
+	#animation.play("death")
+	#await (2)
 	GameManager.respawn_player()
 	
 # função para ataque

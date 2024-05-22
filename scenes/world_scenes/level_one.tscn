@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nncxu55mjbfj"]
+[gd_scene load_steps=12 format=3 uid="uid://nncxu55mjbfj"]
 
 [ext_resource type="Texture2D" uid="uid://bm7pf7f325mt4" path="res://Treasure Hunters (1)/Treasure Hunters/Palm Tree Island/Sprites/Terrain/Terrain (32x32).png" id="2_gqyxq"]
 [ext_resource type="PackedScene" uid="uid://bch2nhhubxci4" path="res://scenes/Entities/player.tscn" id="2_yh62u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b8agwfwpj1max" path="res://Treasure Hunters (1)/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/01.png" id="6_bdrl8"]
 [ext_resource type="Script" path="res://scenes/scripts/UI/UIManager.gd" id="6_vbids"]
 [ext_resource type="PackedScene" uid="uid://c8toctg1mcqn8" path="res://scenes/Entities/sharkboy.tscn" id="8_7ge7y"]
+[ext_resource type="PackedScene" uid="uid://codw67bwioyyx" path="res://scenes/Interactables/health_up.tscn" id="9_lbue8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3t7qb"]
 texture = ExtResource("2_gqyxq")
@@ -660,7 +661,6 @@ position = Vector2(975, 529)
 position = Vector2(865, 530)
 speed = 200.0
 jump_height = -300.0
-attacking = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(24, 2)
@@ -718,3 +718,11 @@ position = Vector2(1020, 531)
 
 [node name="Sharkboy3" parent="Enemies" instance=ExtResource("8_7ge7y")]
 position = Vector2(469, 532)
+
+[node name="HealthPickups" type="Node2D" parent="."]
+
+[node name="HealthUp" parent="HealthPickups" instance=ExtResource("9_lbue8")]
+position = Vector2(1090, 488)
+
+[node name="HealthUp2" parent="HealthPickups" instance=ExtResource("9_lbue8")]
+position = Vector2(915, 536)

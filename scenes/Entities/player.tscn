@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bch2nhhubxci4"]
+[gd_scene load_steps=34 format=3 uid="uid://bch2nhhubxci4"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Player/Player.gd" id="1_ycd00"]
 [ext_resource type="Texture2D" uid="uid://ddnsp6wjet7mx" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/09-Idle Sword/Idle Sword 02.png" id="2_ar2wa"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bgl5ci1b7o0tp" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/12-Fall Sword/Fall Sword 01.png" id="16_wc4kl"]
 [ext_resource type="Texture2D" uid="uid://b85fy037kl0dt" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/15-Attack 1/Attack 1 01.png" id="18_c1sut"]
 [ext_resource type="Texture2D" uid="uid://bf7nmkce71oj1" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/15-Attack 1/Attack 1 02.png" id="19_f3plj"]
+[ext_resource type="Texture2D" uid="uid://cfdetea5kmy6w" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 01.png" id="20_s7arn"]
+[ext_resource type="Texture2D" uid="uid://b5khkwbsqeys3" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 02.png" id="21_6iqxj"]
+[ext_resource type="Texture2D" uid="uid://ic0ub1mi8w28" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 03.png" id="22_c17xm"]
+[ext_resource type="Texture2D" uid="uid://lbdrgi0shi4m" path="res://Treasure Hunters (1)/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 04.png" id="23_kf8e1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1mbh"]
 radius = 7.0
@@ -137,9 +141,26 @@ tracks/2/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_4vl34"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_cuv08"), ExtResource("20_s7arn"), ExtResource("21_6iqxj"), ExtResource("22_c17xm"), ExtResource("23_kf8e1")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5n6dh"]
 _data = {
 "attack": SubResource("Animation_4koyb"),
+"death": SubResource("Animation_4vl34"),
 "fall": SubResource("Animation_fgvvw"),
 "idle": SubResource("Animation_28nm3"),
 "jump": SubResource("Animation_yi54m"),
@@ -157,7 +178,7 @@ monitoring = false
 shape = SubResource("CapsuleShape2D_t1mbh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hsxoh")
+texture = ExtResource("23_kf8e1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ta5ji")
